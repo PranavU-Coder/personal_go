@@ -34,7 +34,7 @@ the chart mentioned in the image file gives an idea of memory footprint by vario
 
 Go programs are fairly lightweight. Each program includes a small amount of extra code that's included in the executable binary called the Go Runtime. One of the purposes of the Go runtime is to clean up unused memory at runtime. It includes a garbage collector that automatically frees up memory that's no longer in use.
 
-Java uses a virtual machine to interpret bytecode at runtime and typically allocates more on the heap.
+Java uses a virtual machine to interpret bytecode at runtime and typically allocates more on the heap
 
 Rust and C programs use slightly less memory than Go programs because more control is given to the developer to optimize the memory usage of the program. The Go runtime just handles it for us automatically.
 
@@ -47,3 +47,25 @@ what this means is:
 (1)When you need to work with individual characters in a string, you should use the rune type. It breaks strings up into their individual characters, which can be more than one byte long.
 
 (2)We can include a wide variety of Unicode characters in our strings, such as emojis and Chinese characters, and Go will handle them just fine.
+
+Unlike other languages, Go requires you to put the opening brace on the same line as the condition and not on a new line.
+
+A function can return a value that the caller doesn't care about. We can explicitly ignore variables by using an underscore, or more precisely, the blank identifier _ hence making it a placeholder.
+
+A return statement without arguments returns the named return values. This is known as a "naked" return. Naked return statements should be used only in short functions. They can harm readability in longer functions.
+
+nil is the zero value of an error. More on this later.
+
+Guard Clauses leverage the ability to return early from a function (or continue through a loop) to make nested conditionals one-dimensional. Instead of using if/else chains, we just return early from the function at the end of each conditional block.
+
+Go supports first-class and higher-order functions, which are just fancy ways of saying "functions as values". Functions are just another type -- like ints and strings and bools.
+
+Anonymous functions are true to form in that they have no name. They're useful when defining a function that will only be used once or to create a quick closure.
+
+The defer keyword is a fairly unique feature of Go. It allows a function to be executed automatically just before its enclosing function returns. The deferred call's arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.
+
+Deferred functions are typically used to clean up resources that are no longer being used. Often to close database connections, file handlers and the like.
+
+A closure is a function that references variables from outside its own function body. The function may access and assign to the referenced variables.
+
+Function currying is a concept from functional programming and involves partial application of functions. It allows a function with multiple arguments to be transformed into a sequence of functions, each taking a single argument.
